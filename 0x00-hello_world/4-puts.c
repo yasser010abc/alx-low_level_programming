@@ -1,15 +1,15 @@
 #include <stdio.h>
-
+a
 /**
  * main - Entry point
  * 
  * Description: A C program that prints with put function
  *
- * Return: Alawys 0 (success)
+ * Return: Alawys 0 (Success)
 */
 
 int main(void)
 {
-        puts("\"Programming is like building a multilingual puzzle");
-        return (0);
+	puts("\"Programming is like building a multilingual puzzle");
+	return (0);
 }
