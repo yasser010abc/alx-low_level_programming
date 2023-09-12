@@ -9,7 +9,7 @@
 */
 int main(void)
 {
-	char ste[] = "_putchar";
+	char str[] = "_putchar";
 	int ch;
 
 	for (ch = 0; ch < 0; ch++)
