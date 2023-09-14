@@ -10,7 +10,8 @@
  * Return: Always 0 (Success)
 */
 int main(void)
-{ int num;
+{
+	int num;
 
 	for (num = 1; num <= 100; num++)
 	{
