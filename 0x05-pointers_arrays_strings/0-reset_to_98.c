@@ -1,15 +1,27 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdbool.h>
 
-/**
- * reset_to_98 - takes a pointer to an int parameter
- *		 and updates the value it points to 98
- *
- * @n: int parameter
- *
- * Return: Nothing
- */
-
-void reset_to_98(int *n)
+// return true if the file specified by the filename exists
+bool file_exists(const char *filename)
 {
-	*n = 98;
+    FILE *fp = fopen(filename, "r");
+    bool is_exist = false;
+    if (fp != NULL)
+    {
+        is_exist = true;
+        fclose(fp); // close the file
+    }
+    return is_exist;
+}
+
+int main()
+{
+    char *filename = "readme.txt";
+
+    if (file_exists(filename))
+        printf("File %s exists", filename);
+    else
+        printf("File %s doesn't exist.", filename);
+
+    return 0;
 }
