@@ -1,30 +1,49 @@
 #include "main.h"
+
 /**
- * wildcmp - Compare strings
- * @s1: pointer to string params
- * @s2: pointer to string params
+ * move_past_star - iterates past asterisk
+ * @s2: the second string, can contain wildcard
  *
- * Return: 0
+ * Return: the pointer past star
  */
-
-int wildcmp(char *s1, char *s2)
+char *move_past_star(char *s2)
 {
-	if (*s1 == '\0')
-	{
-		if (*s2 != '\0' && *s2 == '*')
-		{
-			return (wildcmp(s1, s2 + 1));
-		}
-		return (*s2 == '\0');
-	}
+	if (*s2 == '*')
+		return (move_past_star(s2 + 1));
+	else
+		return (s2);
+}
 
+/**
+ * inception - makes magic a reality
+ * @s1: the first string
+ * @s2: the second string, can contain wildcard
+ *
+ * Return: 1 if identical, 0 if false
+ */
+int inception(char *s1, char *s2)
+{
+	int ret = 0;
+
+	if (!*s1 && *s2 == '*' && !*move_past_star(s2))
+		return (1);
+	if (*s1 == *s2)
+	{
+		if (!*s1)
+			return (1);
+		return (wildcmp(s1 + 1, *s2 == '*' ? s2 : s2 + 1));
+	}
+	if (!*s1 || !s2)
+		return (0);
 	if (*s2 == '*')
 	{
-		return (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1));
+		s2 = move_past_star(s2);
+		if (!*s2)
+			return (1);
+		if (*s1 == *s2)
+			ret += wildcmp(s1 + 1, s2 + 1);
+		ret += inception(s1, s2);
+		return (!!ret);
 	}
-	else if (*s1 == *s2)
-	{
-		return (wildcmp(s1 + 1, s2 + 1));
-	}
-	return (0);
+	return (0);
 }
