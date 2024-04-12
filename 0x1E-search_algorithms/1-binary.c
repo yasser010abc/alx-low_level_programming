@@ -1,3 +1,8 @@
+/*
+ * File: 1-binary.c
+ * Auth: Festus Maithya
+ */
+
 #include "search_algos.h"
 
 /**
